@@ -1,0 +1,26 @@
+.add-review {
+    border: black solid 2px;
+    font-size: 1.6em;
+    margin-block: 20px;
+    background-color: rgb(199, 129, 117);
+    border-radius: 10px;
+}
+
+td {
+    border-bottom: black solid 1px;
+    padding-block: 10px;
+}
+
+.title {
+    text-align: center;
+    width: 99%;
+    background-color: rgb(165, 102, 102)
+}
+
+.review-btn {
+    text-align: center;
+}
+
+input {
+    padding-block: 10px;
+}

@@ -1,5 +1,6 @@
 import { utilService } from './util.service.js'
 import { storageService } from './async-storage.service.js'
+import { eventBusService, showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js';
 
 const BOOK_KEY = 'carDB'
 _createBooks()
@@ -11,6 +12,8 @@ export const bookService = {
     save,
     getEmptyBook,
     getDefaultFilter,
+    getEmptyReview,
+    addReview
 }
 
 function query(filterBy = getDefaultFilter()) {
@@ -51,11 +54,17 @@ function save(book) {
     }
 }
 
-function getEmptyBook(title = '', amount = 100) {
+function getEmptyBook(title = '', amount = '') {
     let book = {
         title,
-        desc: "placerat nisi sodales suscipit tellus",
-        thumbnail: '',
+        subtitle: '',
+        authors: [],
+        publishedDate: '',
+        description: utilService.makeLorem(),
+        pageCount: '',
+        categories: '',
+        thumbnail: "assets/img/book.png",
+        language: '',
         listPrice: {
             amount,
             currencyCode: "EUR",
@@ -76,6 +85,35 @@ function _createBook(title, amount) {
     book.id = utilService.makeId()
     return book
 }
+
+function getEmptyReview() {
+    let review = {
+        fullname: '',
+        rating: 5,
+        readAt: ''
+    }
+    return review
+}
+
+function addReview(bookId, review) {
+    let book = get(bookId).then(book => {
+        if (!book.review) book.review = []
+        book.review.push(review)
+        save(book)
+        console.log(book)
+        showSuccessMsg('Review added!')
+    })
+        .catch((err) => {
+            console.log('Had issues adding', err)
+            showErrorMsg('Could not add review, try again please!')
+        })
+
+
+}
+
+
+
+
 
 function _createBooks() {
     let books = utilService.loadFromStorage(BOOK_KEY)

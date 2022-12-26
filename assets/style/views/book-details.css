@@ -31,3 +31,9 @@
 .cheap {
     background-color: green;
 }
+
+.back-btn {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}

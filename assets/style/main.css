@@ -11,6 +11,7 @@
 /* Views */
 @import 'views/home.css';
 @import 'views/book-details.css';
+@import 'views/miss-book-index.css';
 
 /* Components */
 @import 'cmps/app-header.css';
@@ -19,3 +20,7 @@
 @import 'cmps/book-preview.css';
 @import 'cmps/long-txt.css';
 @import 'cmps/book-filter.css';
+@import 'cmps/book-edit.css';
+@import 'cmps/add-review.css';
+@import 'cmps/review-preview.css';
+@import 'cmps/review-list.css';

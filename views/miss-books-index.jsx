@@ -1,4 +1,5 @@
 const { useState, useEffect } = React
+const { Link } = ReactRouterDOM
 
 import { BookList } from '../cmps/book-list.jsx';
 import { BookDetails } from './book-details.jsx';
@@ -7,11 +8,11 @@ import { BookFilter } from '../cmps/book-filter.jsx';
 
 
 import { bookService } from './../services/book.service.js';
+import { eventBusService, showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js';
 
 
 export function MissBooksIndex() {
     const [books, setBooks] = useState([])
-    const [selectedBook, setSelectedBook] = useState(null)
     const [filterBy, setFilterBy] = useState(bookService.getDefaultFilter())
 
 
@@ -30,14 +31,15 @@ export function MissBooksIndex() {
         bookService.remove(bookId).then(() => {
             const updatedBooks = books.filter(book => book.id !== bookId)
             setBooks(updatedBooks)
+            showSuccessMsg('Book removed!')
         })
+            .catch((err) => {
+                console.log('Had issues removing', err)
+                showErrorMsg('Could not remove book, try again please!')
+            })
+
     }
 
-    function onSelectBook(bookId) {
-        bookService.get(bookId).then((book) => {
-            setSelectedBook(book)
-        })
-    }
 
 
     function onSetFilter(filterByFromFilter) {
@@ -51,20 +53,18 @@ export function MissBooksIndex() {
 
 
     return <section className="miss-book-index">
-        {!selectedBook && <div className="main-car-list">
+        <div className="main-car-list">
             <BookFilter onSetFilter={onSetFilter} />
+            <div className=" btn add-btn">
+                <Link to="/book/edit">Add Book!</Link>
+            </div>
+
             <BookList books={books}
                 onRemoveBook={onRemoveBook}
-                onSelectBook={onSelectBook} />
+            />
         </div>
-        }
 
-        <div>
-            {selectedBook && <BookDetails
-                book={selectedBook}
-                onGoBack={() => setSelectedBook(null)}
-            />}
-        </div>
+
 
     </section>
 }
