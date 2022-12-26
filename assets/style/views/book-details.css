@@ -1,0 +1,33 @@
+.book-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.book-details h1 {
+    font-size: 2.2em;
+    text-decoration: underline;
+}
+
+.book-details img {
+    max-width: 250px;
+    margin-bottom: 20px;
+}
+
+.book-details p {
+    font-size: 1.4em;
+    margin-inline: 40px;
+}
+
+.book-details h5 {
+    font-size: 1.3em;
+    text-align: center;
+}
+
+.expensive {
+    background-color: red;
+}
+
+.cheap {
+    background-color: green;
+}

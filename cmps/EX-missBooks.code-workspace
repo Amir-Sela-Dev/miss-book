@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../../../CaNov22-Materials/Day36-Framework2/inClass"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "EX-missBooks",
+		"liveServer.settings.port": 5501
+	}
+}

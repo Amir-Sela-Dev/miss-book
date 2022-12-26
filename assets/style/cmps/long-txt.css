@@ -1,0 +1,9 @@
+.desc {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.desc button {
+    border-radius: 20px;
+}
