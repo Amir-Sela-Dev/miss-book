@@ -2,6 +2,7 @@ import { utilService } from './util.service.js'
 import { storageService } from './async-storage.service.js'
 import { eventBusService, showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js';
 
+
 const BOOK_KEY = 'carDB'
 _createBooks()
 
@@ -13,7 +14,8 @@ export const bookService = {
     getEmptyBook,
     getDefaultFilter,
     getEmptyReview,
-    addReview
+    addReview,
+    getNextBookId
 }
 
 function query(filterBy = getDefaultFilter()) {
@@ -110,6 +112,16 @@ function addReview(bookId, review) {
 
 
 }
+
+function getNextBookId(bookId) {
+    return storageService.query(BOOK_KEY)
+        .then(books => {
+            var idx = books.findIndex(book => book.id === bookId)
+            if (idx === books.length - 1) idx = -1
+            return books[idx + 1].id
+        })
+}
+
 
 
 

@@ -9,22 +9,25 @@ import { bookService } from './../services/book.service.js';
 
 export function BookDetails() {
     const [book, setBook] = useState(null)
-    const params = useParams()
+    const [nextBookId, setNextBookId] = useState(null)
+    const { bookId } = useParams()
     const navigate = useNavigate()
 
     useEffect(() => {
         loadBook()
-    }, [])
+    }, [bookId])
 
 
 
     function loadBook() {
-        bookService.get(params.bookId)
+        bookService.get(bookId)
             .then((book) => setBook(book))
             .catch((err) => {
                 console.log('Had issues in book details', err)
                 navigate('/book')
             })
+        bookService.getNextBookId(bookId)
+            .then(setNextBookId)
     }
 
     function onGoBack() {
@@ -60,8 +63,9 @@ export function BookDetails() {
         <h2>{getPageCountDisplay()} ({book.pageCount} Pages)</h2>
         <BookDescription txt={book.description} />
         <h5 className={getPriceColor()}  >price: {book.listPrice.amount} {book.listPrice.currencyCode} {(book.listPrice.isOnSale) ? '(🤑On sale!!!🤑)' : ''}</h5>
-        {(book.review) && <ReviewList bookId={params.bookId} />}
-        <AddReview bookId={params.bookId} />
+        {(book.review) && <ReviewList bookId={bookId} />}
+        <AddReview bookId={bookId} />
         <button className="back-btn" onClick={onGoBack}>Go Back</button>
+        <Link className="btn" to={`/book/${nextBookId}`}>Next book</Link>
     </section>
 }

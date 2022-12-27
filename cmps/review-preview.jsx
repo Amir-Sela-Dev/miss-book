@@ -1,10 +1,10 @@
 export function ReviewPreview({ review }) {
 
     function getStars() {
-        if (review.rating === 5) return '⭐⭐⭐⭐⭐'
-        else if (review.rating === 4) return '⭐⭐⭐⭐'
-        else if (review.rating === 3) return '⭐⭐⭐'
-        else if (review.rating === 2) return '⭐⭐'
+        if (+review.rating === 5) return '⭐⭐⭐⭐⭐'
+        else if (+review.rating === 4) return '⭐⭐⭐⭐'
+        else if (+review.rating === 3) return '⭐⭐⭐'
+        else if (+review.rating === 2) return '⭐⭐'
         else return '⭐'
     }
 
