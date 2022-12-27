@@ -20,7 +20,6 @@ export function AddReview({ bookId }) {
 
     function onSaveReview(ev) {
         ev.preventDefault()
-        console.log('wow')
         bookService.addReview(bookId, reviewToEdit)
         setTimeout(() => {
             navigate('/book')
@@ -28,7 +27,6 @@ export function AddReview({ bookId }) {
     }
 
 
-    console.log(reviewToEdit)
 
 
     return <section className="add-review">

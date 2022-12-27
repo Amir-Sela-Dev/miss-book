@@ -17,7 +17,6 @@ export function ReviewList({ bookId }) {
         bookService.get(bookId)
             .then((book) => {
                 setBook(book)
-                console.log(book)
             })
             .catch((err) => {
                 console.log('Had issues in book details', err)

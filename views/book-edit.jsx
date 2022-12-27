@@ -29,7 +29,6 @@ export function BookEdit() {
         })
 
     }
-    console.log(bookToEdit)
 
     return <section className="book-edit">
         <h2>{bookToEdit.id ? 'Edit this book' : 'Add a new book'}</h2>

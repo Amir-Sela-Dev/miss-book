@@ -56,7 +56,7 @@ function save(book) {
     }
 }
 
-function getEmptyBook(title = '', amount = '') {
+function getEmptyBook(title = '', amount = 100) {
     let book = {
         title,
         subtitle: '',
@@ -98,11 +98,10 @@ function getEmptyReview() {
 }
 
 function addReview(bookId, review) {
-    let book = get(bookId).then(book => {
+    get(bookId).then(book => {
         if (!book.review) book.review = []
         book.review.push(review)
         save(book)
-        console.log(book)
         showSuccessMsg('Review added!')
     })
         .catch((err) => {

@@ -6,7 +6,7 @@ export function BookDescription({ txt }) {
 
 
 
-
+    if (!txt) return ''
     return <section className="book-long-details">
         <div className='desc'>
             <p>

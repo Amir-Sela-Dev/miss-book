@@ -53,10 +53,16 @@ export function MissBooksIndex() {
 
 
     return <section className="miss-book-index">
-        <div className="main-car-list">
+        <div className="main-book-list">
             <BookFilter onSetFilter={onSetFilter} />
-            <div className=" btn add-btn">
-                <Link to="/book/edit">Add Book!</Link>
+
+            <div className="add-books-btns">
+                <div className=" btn add-btn">
+                    <Link to="/book/edit">Add Your own Book!</Link>
+                </div>
+                <div className=" btn add-btn" >
+                    <Link to="/book/add-book">Add Book!</Link>
+                </div>
             </div>
 
             <BookList books={books}

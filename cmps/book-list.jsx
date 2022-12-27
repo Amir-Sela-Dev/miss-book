@@ -4,7 +4,6 @@ import { BookPreview } from "./book-preview.jsx"
 
 
 export function BookList({ books, onRemoveBook }) {
-    console.log('hello from booklist')
 
     return <ul className="book-list">
         {

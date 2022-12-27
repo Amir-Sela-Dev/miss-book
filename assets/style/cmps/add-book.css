@@ -1,0 +1,41 @@
+.add-book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.4em;
+}
+
+.add-book input {
+    justify-self: start;
+    align-self: start;
+    width: 30vw;
+    justify-content: center;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
+.add-book .btn {
+    height: 50%;
+}
+
+.add-book li {
+    border: black solid 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 5%;
+    background-color: rgb(198, 103, 103);
+
+
+
+}
+
+.add-book img {
+    width: 10%;
+    align-self: flex-end;
+
+}
+
+.searched-book-list {
+    width: 90vw;
+}

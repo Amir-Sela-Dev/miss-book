@@ -25,7 +25,6 @@ export function showUserMsg(msg) {
     eventBusService.emit('show-user-msg', msg)
 }
 export function showSuccessMsg(txt) {
-    console.log('hi')
     showUserMsg({ txt, type: 'success' })
 }
 export function showErrorMsg(txt) {

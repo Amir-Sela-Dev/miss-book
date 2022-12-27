@@ -1,5 +1,12 @@
 .add-btn {
     text-align: center;
-    width: 20%;
+    width: 200px;
     margin-block-start: 30px;
+    align-self: center;
+}
+
+.add-books-btns {
+    display: flex;
+    flex-wrap: wrap;
+
 }
